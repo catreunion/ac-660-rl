@@ -5,7 +5,7 @@ const Activities = () => {
   // wrap the query in gql template literal
   const QUERY = gql`
     query GetActivitiesBrief {
-      activities {
+      activities(orderBy: activityDate_DESC, first: 100) {
         id
         activityDate
         desc {

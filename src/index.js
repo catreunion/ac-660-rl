@@ -15,7 +15,7 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
 // wrap App in ApolloProvider and inject the client
-// App can access the retrieve data via useQuery hook
+// App can access the retrieved data via useQuery hook
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
