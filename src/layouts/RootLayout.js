@@ -11,7 +11,7 @@ const user = {
 }
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
+  // { name: 'Home', href: '/', current: true },
   { name: 'Activities', href: 'activities', current: false },
   { name: 'About', href: 'about', current: false },
   // { name: 'Calendar', href: '#', current: false },
@@ -136,7 +136,7 @@ const RootLayout = () => {
                     <Disclosure.Button
                       key={item.name}
                       as="a"
-                      to={item.href}
+                      href={item.href}
                       className={classNames(
                         item.current
                           ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
@@ -149,7 +149,7 @@ const RootLayout = () => {
                     </Disclosure.Button>
                   ))}
                 </div>
-                <div className="border-t border-gray-200 pt-4 pb-3">
+                {/* <div className="border-t border-gray-200 pt-4 pb-3">
                   <div className="flex items-center px-4">
                     <div className="flex-shrink-0">
                       <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
@@ -171,14 +171,14 @@ const RootLayout = () => {
                       <Disclosure.Button
                         key={item.name}
                         as="a"
-                        to={item.href}
+                        href={item.href}
                         className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                       >
                         {item.name}
                       </Disclosure.Button>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </Disclosure.Panel>
             </>
           )}
@@ -187,46 +187,20 @@ const RootLayout = () => {
         <div className="py-10">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">Go running</h1>
+              {/* <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900"></h1> */}
             </div>
           </header>
           <main>
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-              {/* Replace with your content */}
-              <Outlet />
-
               {/* <div className="px-4 py-8 sm:px-0">
-                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200">
-                </div>
+                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200"> */}
+              <Outlet />
+              {/* </div>
               </div> */}
-              {/* /End replace */}
             </div>
           </main>
         </div>
       </div>
-
-      {/* <header>
-        <nav>
-          <div className="md:flex md:items-center md:justify-between">
-            <div className="min-w-0 flex-1">
-              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                Go running
-              </h2>
-            </div>
-            <div className="mt-4 flex md:mt-0 md:ml-4">
-              <NavLink to="/" className={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-                Home
-              </NavLink>
-              <NavLink to="activities" className={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-                Activities
-              </NavLink>
-              <NavLink to="about" className={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-                About
-              </NavLink>
-            </div>
-          </div>
-        </nav>
-      </header> */}
     </>
   )
 }
