@@ -1,21 +1,21 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
-import App from "./App"
-import "./index.css"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import App from './App'
+import './index.css'
 
 // create an instance of ApolloClient
 // pass a configuration object to the constructor
 const client = new ApolloClient({
-  uri: "https://api-us-east-1.hygraph.com/v2/clbq4ju4z13gl01uuf7xi0ulm/master",
+  uri: 'https://api-us-east-1.hygraph.com/v2/clbq4ju4z13gl01uuf7xi0ulm/master',
   // create an instance of InMemoryCache for caching query results
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 })
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
 // wrap App in ApolloProvider and inject the client
-// App can access the retrieved data via useQuery hook
+// App can the useQuery hook via React context API
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>

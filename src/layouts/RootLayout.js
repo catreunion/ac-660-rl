@@ -1,26 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+import { Disclosure } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  // { name: 'Home', href: '/', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'Activities', href: 'activities', current: false },
   { name: 'About', href: 'about', current: false },
-  // { name: 'Calendar', href: '#', current: false },
-]
-
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ]
 
 function classNames(...classes) {
@@ -28,31 +13,22 @@ function classNames(...classes) {
 }
 
 const RootLayout = () => {
-  // const inactiveStyle = 'text-black '
-  // const activeStyle = 'bg-indigo-600 text-white'
-
   return (
-    <>
-      <div className="min-h-full">
+    <div className="min-h-full">
+      <header>
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 justify-between">
+                  {/* black cat + nav */}
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
-                      <img
-                        className="block h-8 w-auto lg:hidden"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                      />
-                      <img
-                        className="hidden h-8 w-auto lg:block"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                      />
+                      <img className="block h-8 w-auto lg:hidden" src="/black_cat.svg" alt="Your Company" />
+                      <img className="hidden h-8 w-auto lg:block" src="/black_cat.svg" alt="Your Company" />
                     </div>
-                    <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+
+                    <div className="hidden sm:-my-px sm:ml-4 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
                         <NavLink
                           key={item.name}
@@ -70,7 +46,8 @@ const RootLayout = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="hidden sm:ml-6 sm:flex sm:items-center">
+
+                  {/* <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <button
                       type="button"
                       className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -79,12 +56,11 @@ const RootLayout = () => {
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
 
-                    {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
-                          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                          <img className="h-8 w-8 rounded-full" src="/logo192.png" alt="logo of me" />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -115,9 +91,10 @@ const RootLayout = () => {
                         </Menu.Items>
                       </Transition>
                     </Menu>
-                  </div>
+                  </div> */}
+
+                  {/* Mobile menu button */}
                   <div className="-mr-2 flex items-center sm:hidden">
-                    {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -149,59 +126,18 @@ const RootLayout = () => {
                     </Disclosure.Button>
                   ))}
                 </div>
-                {/* <div className="border-t border-gray-200 pt-4 pb-3">
-                  <div className="flex items-center px-4">
-                    <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium text-gray-800">{user.name}</div>
-                      <div className="text-sm font-medium text-gray-500">{user.email}</div>
-                    </div>
-                    <button
-                      type="button"
-                      className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                      <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                  <div className="mt-3 space-y-1">
-                    {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
-                </div> */}
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
+      </header>
 
-        <div className="py-10">
-          <header>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              {/* <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900"></h1> */}
-            </div>
-          </header>
-          <main>
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-              {/* <div className="px-4 py-8 sm:px-0">
-                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200"> */}
-              <Outlet />
-              {/* </div>
-              </div> */}
-            </div>
-          </main>
+      <main className="py-9">
+        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <Outlet />
         </div>
-      </div>
-    </>
+      </main>
+    </div>
   )
 }
 
