@@ -23,10 +23,10 @@ const RootLayout = () => {
                 <div className="flex h-16 justify-between">
                   {/* black cat + nav */}
                   <div className="flex">
-                    <div className="flex flex-shrink-0 items-center">
+                    <NavLink to="/" className="flex flex-shrink-0 items-center">
                       <img className="block h-8 w-auto lg:hidden" src="/black_cat.svg" alt="Your Company" />
                       <img className="hidden h-8 w-auto lg:block" src="/black_cat.svg" alt="Your Company" />
-                    </div>
+                    </NavLink>
 
                     <div className="hidden sm:-my-px sm:ml-4 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
@@ -133,7 +133,7 @@ const RootLayout = () => {
       </header>
 
       <main className="py-9">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-9">
           <Outlet />
         </div>
       </main>
